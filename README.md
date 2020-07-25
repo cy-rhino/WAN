@@ -1,2 +1,3 @@
 # Rhino WAN
-Arduino compatible with LoRaWAN
+Rhino WAN is a derivative of Grasshopper, an Arduino for LoRaWAN. This design removes the pattern antenna for legal use in certain areas.  
+EDA/CAD: CircuitStudio 1.5.2  
