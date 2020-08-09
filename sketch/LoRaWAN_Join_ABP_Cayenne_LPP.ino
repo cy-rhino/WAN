@@ -74,8 +74,9 @@ void loop( void )
         Serial.println(" )");
       }
       
-        LoRaWAN.beginPacket(); // Cayenne LPP Format
+        LoRaWAN.beginPacket();
         
+        // Cayenne LPP Format
         // Channel
         LoRaWAN.write(0x01); // 1byte Ch.1
         
