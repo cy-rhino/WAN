@@ -74,21 +74,24 @@ void loop( void )
         Serial.println(" )");
       }
       
-        // Cayenne LPP
-        LoRaWAN.beginPacket();
-        LoRaWAN.write(0x01); // Channel 1byte Ch.1
-        LoRaWAN.write(0x88); // Data Type 1byte GPS
+        LoRaWAN.beginPacket(); // Cayenne LPP Format
+        
+        // Channel
+        LoRaWAN.write(0x01); // 1byte Ch.1
+        
+        // Data Type
+        LoRaWAN.write(0x88); // 1byte GPS
         
         // Summit of Mt.Fuji
-        LoRaWAN.write(0x05); // LAT 3bytes 35.2164
-        LoRaWAN.write(0x5F); // 
-        LoRaWAN.write(0xA4); // 
-        LoRaWAN.write(0x15); // LON 3bytes 138.4364
-        LoRaWAN.write(0x1F); // 
-        LoRaWAN.write(0xAC); // 
-        LoRaWAN.write(0x05); // ALT 3bytes 3772
-        LoRaWAN.write(0xc1); // 
-        LoRaWAN.write(0x70); // 
+        LoRaWAN.write(0x05); // 3bytes LAT 35.2164
+        LoRaWAN.write(0x5F);
+        LoRaWAN.write(0xA4);
+        LoRaWAN.write(0x15); // 3bytes LON 138.4364
+        LoRaWAN.write(0x1F);
+        LoRaWAN.write(0xAC);
+        LoRaWAN.write(0x05); // 3bytes ALT 3772
+        LoRaWAN.write(0xc1);
+        LoRaWAN.write(0x70);
         
         LoRaWAN.endPacket();
     }
