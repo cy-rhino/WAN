@@ -79,10 +79,8 @@ void loop( void )
         // Cayenne LPP Format
         // Channel
         LoRaWAN.write(0x01); // 1byte Ch.1
-        
         // Data Type
         LoRaWAN.write(0x88); // 1byte GPS
-        
         // Location: Summit of Mt.Fuji
         LoRaWAN.write(0x05); // 3bytes LAT 35.2164
         LoRaWAN.write(0x5F);
