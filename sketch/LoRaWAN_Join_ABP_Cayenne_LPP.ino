@@ -1,4 +1,4 @@
-/* Simple ABP join for a TTN Japan with Cayenne LPP Format
+/*  Simple ABP join for a TTN Japan with Cayenne LPP Format
  *  
  *  In setup() below please replace the argument to LoRaWAN.begin()
  *  with your appropriate region specific band:
