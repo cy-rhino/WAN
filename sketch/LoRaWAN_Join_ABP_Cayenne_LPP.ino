@@ -34,7 +34,7 @@ const char *devAddr = "00000000";
 const char *nwkSKey = "00000000000000000000000000000000";
 const char *appSKey = "00000000000000000000000000000000";
 
-void setup( void )
+void setup(void)
 {
     pinMode(onboardLED, OUTPUT);
     digitalWrite(onboardLED, LOW);
@@ -51,11 +51,12 @@ void setup( void )
     if (Serial == 1) Serial.println("JOIN()");
 }
 
-void loop( void )
+void loop(void)
 {
     if (LoRaWAN.joined() && !LoRaWAN.busy())
     {
-      if (Serial == 1){
+      if (Serial == 1)
+      {
         Serial.print("TRANSMIT( ");
         Serial.print("TimeOnAir: ");
         Serial.print(LoRaWAN.getTimeOnAir());
@@ -74,27 +75,26 @@ void loop( void )
         Serial.println(" )");
       }
       
-        LoRaWAN.beginPacket();
-        
-        // Cayenne LPP Format
-        // Channel
-        LoRaWAN.write(0x01); // 1byte Ch.1
-        // Data Type
-        LoRaWAN.write(0x88); // 1byte GPS
-        // Location: Summit of Mt.Fuji
-        LoRaWAN.write(0x05); // 3bytes LAT 35.2164
-        LoRaWAN.write(0x5F);
-        LoRaWAN.write(0xA4);
-        LoRaWAN.write(0x15); // 3bytes LON 138.4364
-        LoRaWAN.write(0x1F);
-        LoRaWAN.write(0xAC);
-        LoRaWAN.write(0x05); // 3bytes ALT 3772
-        LoRaWAN.write(0xc1);
-        LoRaWAN.write(0x70);
-        
-        LoRaWAN.endPacket();
+      LoRaWAN.beginPacket(); // Cayenne LPP Format
+      // Channel
+      LoRaWAN.write(0x01); // 1byte Ch.1
+      // Data Type
+      LoRaWAN.write(0x88); // 1byte GPS
+      // Location
+      LoRaWAN.write(0x05); // 3bytes LAT 35.2164
+      LoRaWAN.write(0x5F);
+      LoRaWAN.write(0xA4);
+      LoRaWAN.write(0x15); // 3bytes LON 138.4364
+      LoRaWAN.write(0x1F);
+      LoRaWAN.write(0xAC);
+      LoRaWAN.write(0x05); // 3bytes ALT 3772
+      LoRaWAN.write(0xc1);
+      LoRaWAN.write(0x70);
+      LoRaWAN.endPacket();
     }
     
-    digitalWrite(onboardLED, HIGH); delay(1000); digitalWrite(onboardLED, LOW);
+    digitalWrite(onboardLED, HIGH);
+    delay(1000);
+    digitalWrite(onboardLED, LOW);
     delay(10000);
 }
