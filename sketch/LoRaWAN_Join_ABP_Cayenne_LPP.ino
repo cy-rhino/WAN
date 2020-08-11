@@ -81,12 +81,13 @@ void loop(void)
       // Data Type
       LoRaWAN.write(0x88); // 1byte GPS
       // Location
-      LoRaWAN.write(0x05); // 3bytes LAT 35.2164
-      LoRaWAN.write(0x5F);
-      LoRaWAN.write(0xA4);
-      LoRaWAN.write(0x15); // 3bytes LON 138.4364
-      LoRaWAN.write(0x1F);
-      LoRaWAN.write(0xAC);
+      // Summit of Mt.Fuji WGS84
+      LoRaWAN.write(0x05); // 3bytes LAT 35.3607
+      LoRaWAN.write(0x65);
+      LoRaWAN.write(0x47);
+      LoRaWAN.write(0x15); // 3bytes LON 138.7274
+      LoRaWAN.write(0x2B);
+      LoRaWAN.write(0x0A);
       LoRaWAN.write(0x05); // 3bytes ALT 3772
       LoRaWAN.write(0xc1);
       LoRaWAN.write(0x70);
