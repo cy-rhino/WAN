@@ -1,34 +1,31 @@
-/* Simple ABP join for a TTN Japan with Cayenne LPP Format
+/*  Simple ABP join for a TTN Japan with Cayenne LPP Format
  *  
  *  In setup() below please replace the argument to LoRaWAN.begin()
  *  with your appropriate region specific band:
- *
- *  AS923
- *  AU915
- *  EU868
- *  IN865
- *  KR920
- *  US915
- *
+ *  
+ *  AS923 AU915 EU868 IN865 KR920 US915
+ *  
  *  AU915/US915 networks have 64+8 channels. Typical gateways support only
  *  8 (9) channels. Hence it's a good idea to pick the proper channel
  *  subset via select via LoRaWAN.setSubBand(),
- *    
+ *  
  *  EU868/IN865 have duty cycle restrictions. For debugging it makes sense
  *  to disable those via setDutyCycle(false);
- *    
+ *  
  *  For an external antenna one should set the proper antenna gain
  *  (default is 2.0) via setAntennaGain().
- *    
+ *  
  *  Please edit the keys below as they are just debugging samples.
- *    
- *    
- * This example code is in the public domain.
+ *  
+ *  This example code is in the public domain.
  */
-
+ 
+#include "LoRaRadio.h"
 #include "LoRaWAN.h"
 
-#define onboardLED 13 // Orange LED
+#define RSSI_THRESHOLD -85
+#define SENSE_TIME 6
+#define onboardLED 13
 
 const char *devAddr = "00000000";
 const char *nwkSKey = "00000000000000000000000000000000";
@@ -40,15 +37,17 @@ void setup(void)
     digitalWrite(onboardLED, LOW);
     
     Serial.begin(9600);
-    delay(1000);
-
+    while (!Serial) { }
+    
+    LoRaRadio.begin(923200000);
+    LoRaRadio.setLnaBoost(true);
     LoRaWAN.begin(AS923);
     LoRaWAN.setADR(false);
     LoRaWAN.setDataRate(2);
     LoRaWAN.setTxPower(13.0f);
+    
     LoRaWAN.joinABP(devAddr, nwkSKey, appSKey);
-
-    if (Serial == 1) Serial.println("JOIN()");
+    if (Serial == 1) Serial.println("JOIN( )");
 }
 
 void loop(void)
@@ -73,6 +72,12 @@ void loop(void)
         Serial.print(", DownLinkCounter: ");
         Serial.print(LoRaWAN.getDownLinkCounter());
         Serial.println(" )");
+      }
+      
+      // Carrier Sensing
+      while (!LoRaRadio.sense(RSSI_THRESHOLD, SENSE_TIME)) {
+        Serial.println("Channel Busy: Waiting...");
+        delay(50);
       }
       
       LoRaWAN.beginPacket();
