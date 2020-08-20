@@ -37,7 +37,7 @@ void setup(void)
     digitalWrite(onboardLED, LOW);
     
     Serial.begin(9600);
-    while (!Serial) { }
+    delay(1000);
     
     LoRaRadio.begin(923200000);
     LoRaRadio.setLnaBoost(true);
