@@ -75,9 +75,7 @@ void loop(void)
       }
       
       // Carrier Sensing
-      while (!LoRaRadio.sense(RSSI_THRESHOLD, SENSE_TIME)) {
-        delay(50);
-      }
+      while (!LoRaRadio.sense(RSSI_THRESHOLD, SENSE_TIME)) delay(50);
       
       LoRaWAN.beginPacket();
       // Channel
