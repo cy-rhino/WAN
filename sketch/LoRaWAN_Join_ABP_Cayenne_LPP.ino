@@ -23,7 +23,7 @@
 #include "LoRaRadio.h"
 #include "LoRaWAN.h"
 
-#define RSSI_THRESHOLD -85
+#define RSSI_THRESHOLD -82
 #define SENSE_TIME 6
 #define onboardLED 13
 
