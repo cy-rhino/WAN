@@ -76,7 +76,7 @@ void loop(void)
       
       // Carrier Sensing
       while (!LoRaRadio.sense(RSSI_THRESHOLD, SENSE_TIME)) {
-        if (Serial == 1) Serial.println("Channel Busy: Waiting...");
+        if (Serial == 1) Serial.println("RF Channel Busy: Waiting...");
         delay(50);
       }
       
