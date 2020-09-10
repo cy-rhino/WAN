@@ -19,7 +19,8 @@
  *  
  *  This example code is in the public domain.
  */
- 
+
+#include "STM32L0.h"
 #include "LoRaRadio.h"
 #include "LoRaWAN.h"
 
@@ -99,5 +100,5 @@ void loop(void)
     digitalWrite(onboardLED, HIGH);
     delay(1000);
     digitalWrite(onboardLED, LOW);
-    delay(10000);
+    STM32L0.stop(10000);
 }
