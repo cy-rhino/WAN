@@ -100,5 +100,6 @@ void loop(void)
     digitalWrite(onboardLED, HIGH);
     delay(1000);
     digitalWrite(onboardLED, LOW);
-    STM32L0.stop(10000);
+    
+    STM32L0.stop(9000);
 }
