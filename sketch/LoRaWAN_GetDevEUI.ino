@@ -10,7 +10,7 @@ void setup(void)
 {
   Serial.begin(9600);
   while(!Serial){}
-  delay(30000);
+  delay(15000);
   
   LoRaWAN.begin(AS923);
   Serial.println("devEUI request");
