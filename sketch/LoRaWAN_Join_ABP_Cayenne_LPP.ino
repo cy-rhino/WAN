@@ -45,7 +45,7 @@ void setup(void)
     LoRaWAN.begin(AS923);
     LoRaWAN.setADR(false);
     LoRaWAN.setDataRate(2);
-    LoRaWAN.setTxPower(13.0f);
+    LoRaWAN.setTxPower(13);
     
     LoRaWAN.joinABP(devAddr, nwkSKey, appSKey);
     if (Serial == 1) Serial.println("JOIN( )");
