@@ -91,7 +91,7 @@ void loop(void)
       LoRaWAN.write(0x2B);
       LoRaWAN.write(0x0A);
       LoRaWAN.write(0x05); // 3bytes ALT 3772
-      LoRaWAN.write(0xc1);
+      LoRaWAN.write(0xC1);
       LoRaWAN.write(0x70);
       LoRaWAN.endPacket();
     }
