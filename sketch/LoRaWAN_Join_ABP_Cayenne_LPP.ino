@@ -26,7 +26,6 @@
 
 #define RSSI_THRESHOLD -82
 #define SENSE_TIME 6
-#define onboardLED 13
 
 const char *devAddr = "00000000";
 const char *nwkSKey = "00000000000000000000000000000000";
@@ -34,8 +33,8 @@ const char *appSKey = "00000000000000000000000000000000";
 
 void setup(void)
 {
-    pinMode(onboardLED, OUTPUT);
-    digitalWrite(onboardLED, LOW);
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, LOW);
     
     Serial.begin(9600);
     delay(1000);
@@ -97,9 +96,9 @@ void loop(void)
       LoRaWAN.endPacket();
     }
     
-    digitalWrite(onboardLED, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
     delay(1000);
-    digitalWrite(onboardLED, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
     
     STM32L0.stop(9000);
 }
