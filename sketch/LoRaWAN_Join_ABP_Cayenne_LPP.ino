@@ -44,7 +44,7 @@ void setup(void)
     LoRaWAN.setADR(false);
     LoRaWAN.setDataRate(2);
     
-    // Antenna Gain
+    // Antenna Gain Default: +1.04dBi
     // LoRaWAN.setAntennaGain(1.04f); // ANT-SS900
     LoRaWAN.setAntennaGain(1.2f);     // ANT-916-CW-HWR-SMA
     
